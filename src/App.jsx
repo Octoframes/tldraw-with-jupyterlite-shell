@@ -1,30 +1,58 @@
 import { Tldraw } from "@tldraw/tldraw";
 import "@tldraw/tldraw/tldraw.css";
 import "./App.css";
+import { useState } from "react";
 
 function MakeReal() {
+  const [showMessage, setShowMessage] = useState(false);
+
+  const handleClick = async () => {
+    setShowMessage(true);
+    console.log("This feature is not yet implemented on this page");
+    setTimeout(() => {
+      setShowMessage(false);
+    }, 1000); // Hide the message after 1 second (1000 milliseconds)
+  };
+
   return (
-    <button
-      style={{
-        position: "absolute",
-        zIndex: 1000,
-        right: 10,
-        top: 10,
-        backgroundColor: "#007bff", // Bootstrap primary blue
-        color: "white",
-        padding: "10px 20px",
-        border: "none",
-        borderRadius: "5px",
-        fontSize: "16px",
-        cursor: "pointer",
-        outline: "none",
-      }}
-      onClick={async () => {
-        console.log("Hello World");
-      }}
-    >
-      Make Real
-    </button>
+    <>
+      {showMessage && (
+        <div
+          style={{
+            position: "absolute",
+            zIndex: 1001,
+            right: 10,
+            top: 50, // Adjust so it does not overlap the button
+            backgroundColor: "rgba(0, 0, 0, 0.75)",
+            color: "white",
+            padding: "10px 20px",
+            borderRadius: "5px",
+            fontSize: "16px",
+          }}
+        >
+          This feature is not yet <br></br> implemented on this page
+        </div>
+      )}
+      <button
+        style={{
+          position: "absolute",
+          zIndex: 1000,
+          right: 10,
+          top: 10,
+          backgroundColor: "#007bff", // Bootstrap primary blue
+          color: "white",
+          padding: "10px 20px",
+          border: "none",
+          borderRadius: "5px",
+          fontSize: "16px",
+          cursor: "pointer",
+          outline: "none",
+        }}
+        onClick={handleClick}
+      >
+        Make Real
+      </button>
+    </>
   );
 }
 
